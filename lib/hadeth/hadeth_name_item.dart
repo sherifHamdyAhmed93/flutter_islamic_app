@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_islamic_app/hadeth/hadeth_details_screen.dart';
 import 'package:flutter_islamic_app/hadeth/hadeth_model.dart';
 
 class HadethNameWidget extends StatelessWidget {
@@ -9,7 +10,10 @@ class HadethNameWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.of(context)
+              .pushNamed(HadethDetailsScreen.screen_name, arguments: hadeth);
+        },
         child: Text(
           hadeth.title,
           textAlign: TextAlign.center,

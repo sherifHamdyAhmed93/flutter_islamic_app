@@ -4,6 +4,8 @@ import 'package:flutter_islamic_app/home_screen.dart';
 import 'package:flutter_islamic_app/quarn/sura_details_screen.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
+import 'hadeth/hadeth_details_screen.dart';
+
 void main() {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
@@ -49,6 +51,7 @@ void initialization() async {
       routes: {
         HomeScreen.routeName : (context) => HomeScreen(),
         SuraDetailsScreen.screen_name: (context) => SuraDetailsScreen(),
+        HadethDetailsScreen.screen_name: (context) => HadethDetailsScreen(),
       },
     );
   }
