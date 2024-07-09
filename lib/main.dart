@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_islamic_app/app_theme.dart';
+import 'package:flutter_islamic_app/home_screen.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() {
@@ -36,16 +38,16 @@ void initialization() async {
   print('go!');
   FlutterNativeSplash.remove();
 }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home:  Scaffold(
-      ),
+      theme: AppTheme.lightTheme,
+      initialRoute: HomeScreen.routeName,
+      routes: {
+        HomeScreen.routeName : (context) => HomeScreen(),
+      },
     );
   }
 }
