@@ -7,7 +7,8 @@ class AppTheme{
     primaryColor: AppColors.primaryColor,
     scaffoldBackgroundColor: Colors.transparent,
     appBarTheme: AppBarTheme(
-      backgroundColor: Colors.transparent,
+          iconTheme: IconThemeData(color: Colors.black),
+          backgroundColor: Colors.transparent,
       elevation: 0,
       centerTitle: true
     ),

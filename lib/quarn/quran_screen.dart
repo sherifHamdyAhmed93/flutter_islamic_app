@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_islamic_app/app_colors.dart';
 import 'package:flutter_islamic_app/quarn/sura_name_item.dart';
@@ -30,7 +28,10 @@ class QuranScreen extends StatelessWidget {
           flex: 3,
           child: ListView.separated(
             itemBuilder: (context,index){
-             return  SuraNameWidget(title: suras[index]);
+              return SuraNameWidget(
+                title: suras[index],
+                index: index,
+              );
             },
             separatorBuilder: (context,_){
               return  Divider(color: AppColors.primaryColor,thickness: 2,);

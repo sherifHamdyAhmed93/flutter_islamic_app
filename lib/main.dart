@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_islamic_app/app_theme.dart';
 import 'package:flutter_islamic_app/home_screen.dart';
+import 'package:flutter_islamic_app/quarn/sura_details_screen.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() {
@@ -47,6 +48,7 @@ void initialization() async {
       initialRoute: HomeScreen.routeName,
       routes: {
         HomeScreen.routeName : (context) => HomeScreen(),
+        SuraDetailsScreen.screen_name: (context) => SuraDetailsScreen(),
       },
     );
   }
