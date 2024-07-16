@@ -60,7 +60,8 @@ class _HadethScreenState extends State<HadethScreen> {
 
   void readFile() async {
     String content = await rootBundle.loadString('assets/files/ahadeth.txt');
-    List<String> list = content.split('#\r\n');
+    List<String> list = content.split('#\n');
+    print(list.length);
     for (var i = 0; i < list.length; i++) {
       List<String> hadeth = list[i].split('\n');
       String title = hadeth.removeAt(0);
