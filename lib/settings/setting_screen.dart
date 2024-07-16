@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_islamic_app/app_colors.dart';
 import 'package:flutter_islamic_app/theme_popup_screen/theme_screen.dart';
 
@@ -37,7 +38,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Language',
+          '${AppLocalizations.of(context)!.language}',
           style: Theme.of(context).textTheme.bodyMedium,
         ),
         SizedBox(
@@ -54,7 +55,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Arabic',
+                  '${AppLocalizations.of(context)!.arabic}',
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 Icon(
@@ -74,7 +75,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Theme',
+          '${AppLocalizations.of(context)!.theme}',
           style: Theme.of(context).textTheme.bodyMedium,
         ),
         SizedBox(
@@ -91,7 +92,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Light',
+                  '${AppLocalizations.of(context)!.day_mode}',
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 Icon(

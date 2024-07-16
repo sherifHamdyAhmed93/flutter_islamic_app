@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_islamic_app/app_colors.dart';
 import 'package:flutter_islamic_app/quarn/sura_name_item.dart';
 
@@ -22,7 +23,11 @@ class QuranScreen extends StatelessWidget {
       children: [
         Expanded(flex: 1,child: Image.asset('assets/images/quran_icon.png')),
         Divider(color: AppColors.primaryColor,thickness: 3,),
-        Text('اسم السورة',textAlign: TextAlign.center,style: Theme.of(context).textTheme.bodyLarge,),
+        Text(
+          '${AppLocalizations.of(context)!.surah_name}',
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.bodyLarge,
+        ),
         Divider(color: AppColors.primaryColor,thickness: 3,),
         Expanded(
           flex: 3,

@@ -1,0 +1,18 @@
+{
+  "app_title" : "Islamic",
+  "surah_name" : "Surah Name",
+  "hadiths_name" : "Hadiths",
+  "quran_tab" : "Quran",
+  "tasbeeh_tab" : "Tasbeeh",
+  "hadiths_tab" : "Hadiths",
+    "settings_tab" : "Settings",
+  "tasbeeh_count" : "Tasbeeh Count",
+  "radio_tab" : "Radio",
+  "quran_radio" : "Quran Radio",
+  "language" : "Language",
+  "arabic" : "Arabic",
+  "english" : "English",
+  "theme" : "Theme",
+  "night_mode" : "Dark",
+  "day_mode" : "Light"
+}

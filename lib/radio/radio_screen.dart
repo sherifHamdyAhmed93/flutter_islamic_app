@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../app_colors.dart';
 
@@ -18,7 +19,7 @@ class RadioScreen extends StatelessWidget {
         children: [
           Image.asset('assets/images/radio_logo.png'),
           Text(
-            'إذاعة القرآن الكريم',
+            '${AppLocalizations.of(context)!.quran_radio}',
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.bodyMedium,
           ),
