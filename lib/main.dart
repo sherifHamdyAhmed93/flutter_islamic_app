@@ -2,15 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_islamic_app/app_theme.dart';
 import 'package:flutter_islamic_app/home_screen.dart';
+import 'package:flutter_islamic_app/provider/app_language_provider.dart';
 import 'package:flutter_islamic_app/quarn/sura_details_screen.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:provider/provider.dart';
 
 import 'hadeth/hadeth_details_screen.dart';
 
 void main() {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+      create: (context) {
+        return AppLanguageProvider();
+      },
+      child: const MyApp()));
 }
 
 class MyApp extends StatefulWidget {
@@ -45,10 +51,11 @@ void initialization() async {
 
   @override
   Widget build(BuildContext context) {
+    AppLanguageProvider provider = Provider.of<AppLanguageProvider>(context);
     return MaterialApp(
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      locale: Locale('en'),
+      locale: Locale(provider.currentAppLanguage),
       title: 'Flutter Demo',
       theme: AppTheme.lightTheme,
       initialRoute: HomeScreen.routeName,
