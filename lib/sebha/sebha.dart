@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../app_colors.dart';
 
@@ -69,7 +70,7 @@ class _SebhaScreenState extends State<SebhaScreen> {
             height: 30,
           ),
           Text(
-            'عدد التسبيحات',
+            '${AppLocalizations.of(context)!.tasbeeh_count}',
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.bodyMedium,
           ),

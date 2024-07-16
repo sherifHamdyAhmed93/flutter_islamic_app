@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../app_colors.dart';
 import 'hadeth_model.dart';
@@ -29,7 +30,7 @@ class _HadethScreenState extends State<HadethScreen> {
           thickness: 3,
         ),
         Text(
-          'الأحاديث',
+          '${AppLocalizations.of(context)!.hadiths_name}',
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.bodyLarge,
         ),

@@ -1,0 +1,18 @@
+{
+  "app_title" : "اسلامي",
+  "surah_name" : "اسم السورة",
+  "hadiths_name" : "الأحاديث",
+  "quran_tab" : "القرآن",
+  "tasbeeh_tab" : "التسبيح",
+  "hadiths_tab" : "الأحاديث",
+  "settings_tab" : "الاعدادات",
+  "tasbeeh_count" : "عدد التسبيحات",
+  "radio_tab" : "الراديو",
+  "quran_radio" : "إذاعة القرآن الكريم",
+  "language" : "اللغة",
+  "arabic" : "العربية",
+  "english" : "الانجليزية",
+  "theme" : "النمط",
+  "night_mode" : "ليلي",
+  "day_mode" : "نهاري"
+}

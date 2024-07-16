@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_islamic_app/app_colors.dart';
 import 'package:flutter_islamic_app/hadeth/hadeth_screen.dart';
 import 'package:flutter_islamic_app/quarn/quran_screen.dart';
@@ -32,7 +33,12 @@ class _HomeScreenState extends State<HomeScreen> {
       children: [
         Image.asset("assets/images/background_screen.png",width: double.infinity,height: double.infinity,fit: BoxFit.fill,),
         Scaffold(
-          appBar: AppBar(title: Text('Islami',style: Theme.of(context).textTheme.titleLarge,),),
+          appBar: AppBar(
+            title: Text(
+              '${AppLocalizations.of(context)!.app_title}',
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+          ),
           body: tabs[selectedIndex],
           bottomNavigationBar: Theme(
             data: Theme.of(context).copyWith(canvasColor: AppColors.primaryColor),
@@ -45,12 +51,21 @@ class _HomeScreenState extends State<HomeScreen> {
                 });
               },
               items: [
-                BottomNavigationBarItem(icon: ImageIcon(AssetImage("assets/images/quran.png")),label: 'Quran'),
-                BottomNavigationBarItem(icon: ImageIcon(AssetImage("assets/images/hadath.png")),label: 'Hadath'),
-                BottomNavigationBarItem(icon: ImageIcon(AssetImage("assets/images/sebha.png")),label: 'Sebha'),
-                BottomNavigationBarItem(icon: ImageIcon(AssetImage("assets/images/radio.png")),label: 'Radio'),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.settings), label: 'settings'),
+                    icon: ImageIcon(AssetImage("assets/images/quran.png")),
+                    label: '${AppLocalizations.of(context)!.quran_tab}'),
+                BottomNavigationBarItem(
+                    icon: ImageIcon(AssetImage("assets/images/hadath.png")),
+                    label: '${AppLocalizations.of(context)!.hadiths_tab}'),
+                BottomNavigationBarItem(
+                    icon: ImageIcon(AssetImage("assets/images/sebha.png")),
+                    label: '${AppLocalizations.of(context)!.tasbeeh_tab}'),
+                BottomNavigationBarItem(
+                    icon: ImageIcon(AssetImage("assets/images/radio.png")),
+                    label: '${AppLocalizations.of(context)!.radio_tab}'),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.settings),
+                    label: '${AppLocalizations.of(context)!.settings_tab}'),
               ],
             ),
           ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LanguageScreen extends StatelessWidget {
   const LanguageScreen({super.key});
@@ -15,7 +16,7 @@ class LanguageScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'English',
+                '${AppLocalizations.of(context)!.english}',
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
               Icon(
@@ -32,7 +33,7 @@ class LanguageScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Arabic',
+                '${AppLocalizations.of(context)!.arabic}',
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
               Icon(

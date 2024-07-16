@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ThemeScreen extends StatelessWidget {
   const ThemeScreen({super.key});
@@ -15,7 +16,7 @@ class ThemeScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Light',
+                '${AppLocalizations.of(context)!.day_mode}',
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
               Icon(
@@ -32,7 +33,7 @@ class ThemeScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Dark',
+                '${AppLocalizations.of(context)!.night_mode}',
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
               Icon(
