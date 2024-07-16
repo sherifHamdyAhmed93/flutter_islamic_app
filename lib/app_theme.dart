@@ -40,8 +40,39 @@ class AppTheme{
       unselectedItemColor: AppColors.whiteColor,
       showSelectedLabels: true,
       showUnselectedLabels: false
-    )
-  );
+    ));
+
+  static final ThemeData darkkTheme = ThemeData(
+      primaryColor: AppColors.darkPrimaryColor,
+      scaffoldBackgroundColor: Colors.transparent,
+      appBarTheme: AppBarTheme(
+          iconTheme: IconThemeData(color: Colors.white),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          centerTitle: true),
+      textTheme: TextTheme(
+          titleLarge: TextStyle(
+              color: AppColors.whiteColor,
+              fontSize: 30,
+              fontWeight: FontWeight.w700),
+          bodyLarge: TextStyle(
+              color: AppColors.whiteColor,
+              fontSize: 25,
+              fontWeight: FontWeight.w600),
+          bodyMedium: TextStyle(
+              color: AppColors.whiteColor,
+              fontSize: 25,
+              fontWeight: FontWeight.w400),
+          bodySmall: TextStyle(
+              color: AppColors.whiteColor,
+              fontSize: 20,
+              fontWeight: FontWeight.w400)),
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          backgroundColor: AppColors.darkBackgroundColor,
+          selectedItemColor: AppColors.darkPrimaryColor,
+          unselectedItemColor: AppColors.whiteColor,
+          showSelectedLabels: true,
+          showUnselectedLabels: false));
 
 
 }

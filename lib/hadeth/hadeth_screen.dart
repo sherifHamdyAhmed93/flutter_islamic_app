@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../app_colors.dart';
+import '../componets/line_widget.dart';
 import 'hadeth_model.dart';
 import 'hadeth_name_item.dart';
 
@@ -25,8 +25,7 @@ class _HadethScreenState extends State<HadethScreen> {
     return Column(
       children: [
         Expanded(flex: 1, child: Image.asset('assets/images/hadeth_logo.png')),
-        Divider(
-          color: AppColors.primaryColor,
+        LineWidget(
           thickness: 3,
         ),
         Text(
@@ -34,8 +33,7 @@ class _HadethScreenState extends State<HadethScreen> {
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.bodyLarge,
         ),
-        Divider(
-          color: AppColors.primaryColor,
+        LineWidget(
           thickness: 3,
         ),
         Expanded(
@@ -47,8 +45,7 @@ class _HadethScreenState extends State<HadethScreen> {
               );
             },
             separatorBuilder: (context, _) {
-              return Divider(
-                color: AppColors.primaryColor,
+              return LineWidget(
                 thickness: 2,
               );
             },

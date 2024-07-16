@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_islamic_app/app_colors.dart';
+import 'package:flutter_islamic_app/provider/app_theme_provider.dart';
 import 'package:flutter_islamic_app/theme_popup_screen/theme_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -18,6 +19,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     AppLanguageProvider provider = Provider.of<AppLanguageProvider>(context);
+    AppThemeProvider themeProvider = Provider.of<AppThemeProvider>(context);
 
     return Container(
       margin: EdgeInsets.symmetric(
@@ -31,7 +33,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           SizedBox(
             height: 30,
           ),
-          _buildThemeWidget()
+          _buildThemeWidget(themeProvider)
         ],
       ),
     );
@@ -74,7 +76,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
-  Widget _buildThemeWidget() {
+  Widget _buildThemeWidget(AppThemeProvider provider) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -96,7 +98,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  '${AppLocalizations.of(context)!.day_mode}',
+                  provider.getCurrentThemeName(context),
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 Icon(

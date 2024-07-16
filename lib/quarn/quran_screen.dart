@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_islamic_app/app_colors.dart';
+import 'package:flutter_islamic_app/componets/line_widget.dart';
 import 'package:flutter_islamic_app/quarn/sura_name_item.dart';
 
 class QuranScreen extends StatelessWidget {
@@ -22,13 +22,13 @@ class QuranScreen extends StatelessWidget {
     return Column(
       children: [
         Expanded(flex: 1,child: Image.asset('assets/images/quran_icon.png')),
-        Divider(color: AppColors.primaryColor,thickness: 3,),
+        LineWidget(),
         Text(
           '${AppLocalizations.of(context)!.surah_name}',
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.bodyLarge,
         ),
-        Divider(color: AppColors.primaryColor,thickness: 3,),
+        LineWidget(),
         Expanded(
           flex: 3,
           child: ListView.separated(
@@ -39,7 +39,9 @@ class QuranScreen extends StatelessWidget {
               );
             },
             separatorBuilder: (context,_){
-              return  Divider(color: AppColors.primaryColor,thickness: 2,);
+              return LineWidget(
+                thickness: 2,
+              );
             },
             itemCount: suras.length,),
         )

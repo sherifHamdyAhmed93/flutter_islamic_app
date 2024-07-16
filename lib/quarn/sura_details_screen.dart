@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_islamic_app/provider/app_theme_provider.dart';
 import 'package:flutter_islamic_app/quarn/sura_details_item.dart';
 import 'package:flutter_islamic_app/quarn/sura_model.dart';
+import 'package:provider/provider.dart';
 
-import '../app_colors.dart';
+import '../componets/line_widget.dart';
 
 class SuraDetailsScreen extends StatefulWidget {
   static String screen_name = 'sura_details_screen';
@@ -20,6 +22,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     var args = ModalRoute.of(context)?.settings.arguments as SuraModel;
+    AppThemeProvider themeProvider = Provider.of<AppThemeProvider>(context);
 
     if (lines.isEmpty) {
       readFile(args.index);
@@ -28,7 +31,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
     return Stack(
       children: [
         Image.asset(
-          "assets/images/background_screen.png",
+          themeProvider.getBackgroundImage(),
           width: double.infinity,
           height: double.infinity,
           fit: BoxFit.fill,
@@ -43,7 +46,8 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
             body: Container(
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(15)),
+                  color: themeProvider.getContainerBackground(),
+                  borderRadius: BorderRadius.circular(15)),
               margin: EdgeInsets.symmetric(
                 horizontal: MediaQuery.of(context).size.width * 0.07,
                 vertical: MediaQuery.of(context).size.width * 0.2,
@@ -53,8 +57,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                     return SuraDetailsItem(content: lines[index], index: index);
                   },
                   separatorBuilder: (context, _) {
-                    return Divider(
-                      color: AppColors.primaryColor,
+                    return LineWidget(
                       thickness: 0,
                     );
                   },
