@@ -29,6 +29,12 @@ class AppThemeProvider extends ChangeNotifier {
         : AppColors.darkPrimaryColor;
   }
 
+  Color getSelectionColor() {
+    return isCurrentAppThemeLight()
+        ? AppColors.primaryColor
+        : AppColors.darkPrimaryColor;
+  }
+
   Color getContainerBackground() {
     return isCurrentAppThemeLight()
         ? AppColors.whiteColor

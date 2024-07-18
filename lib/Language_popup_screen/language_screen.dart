@@ -4,6 +4,7 @@ import 'package:flutter_islamic_app/app_colors.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/app_language_provider.dart';
+import '../provider/app_theme_provider.dart';
 
 class LanguageScreen extends StatefulWidget {
   const LanguageScreen({super.key});
@@ -16,6 +17,8 @@ class _LanguageScreenState extends State<LanguageScreen> {
   @override
   Widget build(BuildContext context) {
     AppLanguageProvider provider = Provider.of<AppLanguageProvider>(context);
+    AppThemeProvider themeProvider = Provider.of<AppThemeProvider>(context);
+
     return Container(
       height: MediaQuery.of(context).size.height * 0.25,
       padding: EdgeInsets.all(15),
@@ -27,7 +30,8 @@ class _LanguageScreenState extends State<LanguageScreen> {
               provider.changeAppLanguage('en');
             },
             child: provider.isCurrentAppLangEn()
-                ? setSelectedItem(AppLocalizations.of(context)!.english)
+                ? setSelectedItem(AppLocalizations.of(context)!.english,
+                    themeProvider.getSelectionColor())
                 : setUnSelectedItem(AppLocalizations.of(context)!.english),
           ),
           SizedBox(
@@ -38,7 +42,8 @@ class _LanguageScreenState extends State<LanguageScreen> {
               provider.changeAppLanguage('ar');
             },
             child: provider.isCurrentAppLangEn() == false
-                ? setSelectedItem(AppLocalizations.of(context)!.arabic)
+                ? setSelectedItem(AppLocalizations.of(context)!.arabic,
+                    themeProvider.getSelectionColor())
                 : setUnSelectedItem(AppLocalizations.of(context)!.arabic),
           )
         ],
@@ -46,7 +51,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
     );
   }
 
-  Widget setSelectedItem(String text) {
+  Widget setSelectedItem(String text, Color color) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -54,12 +59,11 @@ class _LanguageScreenState extends State<LanguageScreen> {
           text,
           style: Theme.of(context)
               .textTheme
-              .bodyMedium!
-              .copyWith(color: AppColors.primaryColor),
+              .bodyMedium!.copyWith(color: color),
         ),
         Icon(
           Icons.check,
-          color: AppColors.primaryColor,
+          color: color,
           size: 25,
         )
       ],
@@ -69,7 +73,10 @@ class _LanguageScreenState extends State<LanguageScreen> {
   Widget setUnSelectedItem(String text) {
     return Text(
       text,
-      style: Theme.of(context).textTheme.bodyMedium,
+      style: Theme.of(context)
+          .textTheme
+          .bodyMedium!
+          .copyWith(color: AppColors.blackColor),
     );
   }
 }

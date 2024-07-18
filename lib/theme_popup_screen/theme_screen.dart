@@ -27,7 +27,8 @@ class _ThemeScreenState extends State<ThemeScreen> {
               provider.changeAppTheme(ThemeMode.light);
             },
             child: provider.isCurrentAppThemeLight()
-                ? setSelectedItem(AppLocalizations.of(context)!.day_mode)
+                ? setSelectedItem(AppLocalizations.of(context)!.day_mode,
+                    provider.getSelectionColor())
                 : setUnSelectedItem(AppLocalizations.of(context)!.day_mode),
           ),
           SizedBox(
@@ -38,7 +39,8 @@ class _ThemeScreenState extends State<ThemeScreen> {
               provider.changeAppTheme(ThemeMode.dark);
             },
             child: provider.isCurrentAppThemeLight() == false
-                ? setSelectedItem(AppLocalizations.of(context)!.night_mode)
+                ? setSelectedItem(AppLocalizations.of(context)!.night_mode,
+                    provider.getSelectionColor())
                 : setUnSelectedItem(AppLocalizations.of(context)!.night_mode),
           )
         ],
@@ -46,7 +48,7 @@ class _ThemeScreenState extends State<ThemeScreen> {
     );
   }
 
-  Widget setSelectedItem(String text) {
+  Widget setSelectedItem(String text, Color color) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -54,12 +56,11 @@ class _ThemeScreenState extends State<ThemeScreen> {
           text,
           style: Theme.of(context)
               .textTheme
-              .bodyMedium!
-              .copyWith(color: AppColors.darkPrimaryColor),
+              .bodyMedium!.copyWith(color: color),
         ),
         Icon(
           Icons.check,
-          color: AppColors.darkPrimaryColor,
+          color: color,
           size: 25,
         )
       ],

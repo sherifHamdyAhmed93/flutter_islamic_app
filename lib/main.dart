@@ -55,10 +55,11 @@ class _MyAppState extends State<MyApp> {
     AppThemeProvider themeProvider = Provider.of<AppThemeProvider>(context);
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       locale: Locale(langProvider.currentAppLanguage),
-      title: 'Flutter Demo',
+      title: 'Quran App',
       theme: themeProvider.getCurrentAppTheme(),
       themeMode: themeProvider.currentAppTheme,
       initialRoute: HomeScreen.routeName,

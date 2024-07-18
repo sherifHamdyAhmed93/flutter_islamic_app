@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_islamic_app/app_colors.dart';
 import 'package:flutter_islamic_app/provider/app_theme_provider.dart';
 import 'package:flutter_islamic_app/theme_popup_screen/theme_screen.dart';
 import 'package:provider/provider.dart';
@@ -29,7 +28,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildLanguageWidget(provider),
+          _buildLanguageWidget(provider, themeProvider),
           SizedBox(
             height: 30,
           ),
@@ -39,7 +38,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
-  Widget _buildLanguageWidget(AppLanguageProvider provider) {
+  Widget _buildLanguageWidget(
+      AppLanguageProvider provider, AppThemeProvider themeProvider) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -55,7 +55,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           child: Container(
             padding: EdgeInsets.all(20),
             decoration: BoxDecoration(
-                border: Border.all(color: AppColors.primaryColor),
+                border: Border.all(color: themeProvider.getLineColor()),
                 borderRadius: BorderRadius.circular(10)),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -67,6 +67,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 Icon(
                   Icons.keyboard_arrow_down,
                   size: 25,
+                  color: themeProvider.getLineColor(),
                 )
               ],
             ),
@@ -92,7 +93,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           child: Container(
             padding: EdgeInsets.all(20),
             decoration: BoxDecoration(
-                border: Border.all(color: AppColors.primaryColor),
+                border: Border.all(color: provider.getLineColor()),
                 borderRadius: BorderRadius.circular(10)),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -104,6 +105,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 Icon(
                   Icons.keyboard_arrow_down,
                   size: 25,
+                  color: provider.getLineColor(),
                 )
               ],
             ),

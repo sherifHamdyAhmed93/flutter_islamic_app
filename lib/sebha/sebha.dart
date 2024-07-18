@@ -47,7 +47,10 @@ class _SebhaScreenState extends State<SebhaScreen> {
                 children: [
                   Positioned(
                     top: 0,
-                    child: Image.asset('assets/images/head_of_seb7a.png'),
+                    child: Image.asset(
+                      'assets/images/head_of_seb7a.png',
+                      color: themeProvider.getIconsColor(),
+                    ),
                     width: MediaQuery.of(context).size.width * 0.2,
                     height: MediaQuery.of(context).size.width * 0.2,
                   ),
@@ -62,6 +65,7 @@ class _SebhaScreenState extends State<SebhaScreen> {
                           width: MediaQuery.of(context).size.width * 0.5,
                           height: MediaQuery.of(context).size.width * 0.5,
                           fit: BoxFit.fill,
+                          color: themeProvider.getIconsColor(),
                         ),
                       ),
                     ),
