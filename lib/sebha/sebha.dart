@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 import '../app_colors.dart';
+import '../provider/app_theme_provider.dart';
 
 class SebhaScreen extends StatefulWidget {
   SebhaScreen({super.key});
@@ -24,6 +26,8 @@ class _SebhaScreenState extends State<SebhaScreen> {
 
   @override
   Widget build(BuildContext context) {
+    AppThemeProvider themeProvider = Provider.of<AppThemeProvider>(context);
+
     return Container(
       padding: EdgeInsets.only(top: 20),
       margin: EdgeInsets.symmetric(
@@ -43,7 +47,10 @@ class _SebhaScreenState extends State<SebhaScreen> {
                 children: [
                   Positioned(
                     top: 0,
-                    child: Image.asset('assets/images/head_of_seb7a.png'),
+                    child: Image.asset(
+                      'assets/images/head_of_seb7a.png',
+                      color: themeProvider.getIconsColor(),
+                    ),
                     width: MediaQuery.of(context).size.width * 0.2,
                     height: MediaQuery.of(context).size.width * 0.2,
                   ),
@@ -58,6 +65,7 @@ class _SebhaScreenState extends State<SebhaScreen> {
                           width: MediaQuery.of(context).size.width * 0.5,
                           height: MediaQuery.of(context).size.width * 0.5,
                           fit: BoxFit.fill,
+                          color: themeProvider.getIconsColor(),
                         ),
                       ),
                     ),
@@ -80,7 +88,10 @@ class _SebhaScreenState extends State<SebhaScreen> {
           Container(
             padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
             decoration: BoxDecoration(
-                color: AppColors.primaryColor.withOpacity(0.75),
+                color: (themeProvider.isCurrentAppThemeLight()
+                        ? AppColors.primaryColor
+                        : AppColors.darkBackgroundColor)
+                    .withOpacity(0.75),
                 borderRadius: BorderRadius.circular(20)),
             child: Text(
               '$_currentCount',
@@ -93,7 +104,7 @@ class _SebhaScreenState extends State<SebhaScreen> {
           Container(
             padding: EdgeInsets.all(10),
             decoration: BoxDecoration(
-                color: AppColors.primaryColor,
+                color: themeProvider.getIconsColor(),
                 borderRadius: BorderRadius.circular(30)),
             child: Theme(
               data: Theme.of(context).copyWith(

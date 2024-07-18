@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_islamic_app/hadeth/hadeth_model.dart';
+import 'package:provider/provider.dart';
 
-import '../app_colors.dart';
+import '../componets/line_widget.dart';
+import '../provider/app_theme_provider.dart';
 import 'hadeth_details_item.dart';
 
 class HadethDetailsScreen extends StatefulWidget {
@@ -17,11 +19,12 @@ class _HadethDetailsScreenState extends State<HadethDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     var args = ModalRoute.of(context)?.settings.arguments as HadethModel;
+    AppThemeProvider themeProvider = Provider.of<AppThemeProvider>(context);
 
     return Stack(
       children: [
         Image.asset(
-          "assets/images/background_screen.png",
+          themeProvider.getBackgroundImage(),
           width: double.infinity,
           height: double.infinity,
           fit: BoxFit.fill,
@@ -36,7 +39,8 @@ class _HadethDetailsScreenState extends State<HadethDetailsScreen> {
             body: Container(
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(15)),
+                  color: themeProvider.getContainerBackground(),
+                  borderRadius: BorderRadius.circular(15)),
               margin: EdgeInsets.symmetric(
                 horizontal: MediaQuery.of(context).size.width * 0.07,
                 vertical: MediaQuery.of(context).size.width * 0.2,
@@ -46,8 +50,7 @@ class _HadethDetailsScreenState extends State<HadethDetailsScreen> {
                     return HadethDetailsItem(content: args.content[index]);
                   },
                   separatorBuilder: (context, _) {
-                    return Divider(
-                      color: AppColors.primaryColor,
+                    return LineWidget(
                       thickness: 0,
                     );
                   },

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_islamic_app/app_colors.dart';
+import 'package:flutter_islamic_app/provider/app_theme_provider.dart';
 import 'package:flutter_islamic_app/theme_popup_screen/theme_screen.dart';
+import 'package:provider/provider.dart';
 
 import '../Language_popup_screen/language_screen.dart';
+import '../provider/app_language_provider.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -15,6 +17,9 @@ class SettingsScreen extends StatefulWidget {
 class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
+    AppLanguageProvider provider = Provider.of<AppLanguageProvider>(context);
+    AppThemeProvider themeProvider = Provider.of<AppThemeProvider>(context);
+
     return Container(
       margin: EdgeInsets.symmetric(
         horizontal: MediaQuery.of(context).size.width * 0.04,
@@ -23,17 +28,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildLanguageWidget(),
+          _buildLanguageWidget(provider, themeProvider),
           SizedBox(
             height: 30,
           ),
-          _buildThemeWidget()
+          _buildThemeWidget(themeProvider)
         ],
       ),
     );
   }
 
-  Widget _buildLanguageWidget() {
+  Widget _buildLanguageWidget(
+      AppLanguageProvider provider, AppThemeProvider themeProvider) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -49,18 +55,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
           child: Container(
             padding: EdgeInsets.all(20),
             decoration: BoxDecoration(
-                border: Border.all(color: AppColors.primaryColor),
+                border: Border.all(color: themeProvider.getLineColor()),
                 borderRadius: BorderRadius.circular(10)),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  '${AppLocalizations.of(context)!.arabic}',
+                  '${provider.getCurrentLanguageName(context)}',
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 Icon(
                   Icons.keyboard_arrow_down,
                   size: 25,
+                  color: themeProvider.getLineColor(),
                 )
               ],
             ),
@@ -70,7 +77,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
-  Widget _buildThemeWidget() {
+  Widget _buildThemeWidget(AppThemeProvider provider) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -86,18 +93,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
           child: Container(
             padding: EdgeInsets.all(20),
             decoration: BoxDecoration(
-                border: Border.all(color: AppColors.primaryColor),
+                border: Border.all(color: provider.getLineColor()),
                 borderRadius: BorderRadius.circular(10)),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  '${AppLocalizations.of(context)!.day_mode}',
+                  provider.getCurrentThemeName(context),
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 Icon(
                   Icons.keyboard_arrow_down,
                   size: 25,
+                  color: provider.getLineColor(),
                 )
               ],
             ),

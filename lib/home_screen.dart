@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_islamic_app/app_colors.dart';
 import 'package:flutter_islamic_app/hadeth/hadeth_screen.dart';
 import 'package:flutter_islamic_app/quarn/quran_screen.dart';
 import 'package:flutter_islamic_app/radio/radio_screen.dart';
 import 'package:flutter_islamic_app/sebha/sebha.dart';
 import 'package:flutter_islamic_app/settings/setting_screen.dart';
+import 'package:provider/provider.dart';
+
+import 'provider/app_theme_provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -29,9 +31,16 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    AppThemeProvider themeProvider = Provider.of<AppThemeProvider>(context);
+
     return Stack(
       children: [
-        Image.asset("assets/images/background_screen.png",width: double.infinity,height: double.infinity,fit: BoxFit.fill,),
+        Image.asset(
+          themeProvider.getBackgroundImage(),
+          width: double.infinity,
+          height: double.infinity,
+          fit: BoxFit.fill,
+        ),
         Scaffold(
           appBar: AppBar(
             title: Text(
@@ -41,7 +50,8 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           body: tabs[selectedIndex],
           bottomNavigationBar: Theme(
-            data: Theme.of(context).copyWith(canvasColor: AppColors.primaryColor),
+            data: Theme.of(context)
+                .copyWith(canvasColor: themeProvider.getNavBarBackgrounnd()),
             child: BottomNavigationBar(
               currentIndex:selectedIndex ,
               onTap: (value){
