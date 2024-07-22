@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_islamic_app/app_theme.dart';
 import 'package:flutter_islamic_app/home_screen.dart';
 import 'package:flutter_islamic_app/provider/app_language_provider.dart';
 import 'package:flutter_islamic_app/provider/app_theme_provider.dart';
@@ -60,7 +61,8 @@ class _MyAppState extends State<MyApp> {
       supportedLocales: AppLocalizations.supportedLocales,
       locale: Locale(langProvider.currentAppLanguage),
       title: 'Quran App',
-      theme: themeProvider.getCurrentAppTheme(),
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
       themeMode: themeProvider.currentAppTheme,
       initialRoute: HomeScreen.routeName,
       routes: {

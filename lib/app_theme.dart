@@ -42,7 +42,7 @@ class AppTheme{
       showUnselectedLabels: false
     ));
 
-  static final ThemeData darkkTheme = ThemeData(
+  static final ThemeData darkTheme = ThemeData(
       primaryColor: AppColors.darkPrimaryColor,
       scaffoldBackgroundColor: Colors.transparent,
       appBarTheme: AppBarTheme(
